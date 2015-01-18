@@ -3,14 +3,27 @@
 <CalcGUI>:
     down: down
     up: up
+    id: main
+    
+    HelpButton:
+        id: help
+        background_color: 255, 255, 0, 1
+        font_size: 12
+        height: root.height /3
+        width: root.width / 10
+        y: root.y
+        x: root.x
+        text: "Help"
+    
     ScrollButton:
         input: input
         id: down
+        direction: "DOWN"
         background_color: 255, 0, 0, 1
         font_size: 12
-        height: root.height /2
+        height: root.height /3
         width: root.width / 10
-        y: root.y
+        y: root.y + help.height
         x: root.x
         Image:
             source: "down.png"
@@ -24,11 +37,12 @@
     ScrollButton:
         input: input
         id: up
+        direction: "UP"
         background_color: 255, 0, 0, 1
         font_size: 12
-        height: root.height /2
+        height: root.height /3
         width: root.width / 10
-        y: root.y + down.height
+        y: root.y + down.height + help.height
         x: root.x
         Image:
             source: "up.png"
@@ -61,7 +75,7 @@
 	Label:
 		canvas.before:
 			Color:
-				rgba: 0, 0, 255, 1
+				rgba: .84, .84, .77, 1
 			Rectangle:
 				pos: self.pos
 				size: self.size
@@ -70,16 +84,16 @@
 		text_size: self.size
 		valign: 'top'
 		halign: 'left'
-		size: root.width, (root.height - input.height)/8
+		size: root.width - up.width, (root.height - input.height)/8
 		y: root.y + input.height + 7*self.height
 		x: root.x + up.width
 		font_size: 32
 		color: (255, 255, 255, 1)
-		text: ''
+        text: ''
 	Label:
 		canvas.before:
 			Color:
-				rgba: 0, 255, 0, 1
+				rgba: .84, .84, .77, 1
 			Rectangle:
 				pos: self.pos
 				size: self.size
@@ -88,16 +102,16 @@
 		text_size: self.size
 		valign: 'top'
 		halign: 'right'
-		size: root.width, (root.height - input.height)/8
+		size: root.width - up.width, (root.height - input.height)/8
 		y: root.y + input.height + 6*self.height
 		x: root.x + up.width
 		font_size: 32
-		color: 255, 255, 255, 1
+		color: (255, 255, 255, 1)
 		text: ''
 	Label:
 		canvas.before:
 			Color:
-				rgba: 0, 0, 255, 1
+				rgba: .84, .84, .77, 1
 			Rectangle:
 				pos: self.pos
 				size: self.size
@@ -106,7 +120,7 @@
 		text_size: self.size
 		valign: 'top'
 		halign: 'left'
-		size: root.width, (root.height - input.height)/8
+		size: root.width - up.width, (root.height - input.height)/8
 		y: root.y + input.height + 5*self.height
 		x: root.x + up.width
 		font_size: 32
@@ -115,7 +129,7 @@
 	Label:
 		canvas.before:
 			Color:
-				rgba: 0, 0, 255, 1
+				rgba: .84, .84, .77, 1
 			Rectangle:
 				pos: self.pos
 				size: self.size
@@ -124,7 +138,7 @@
 		text_size: self.size
 		valign: 'top'
 		halign: 'right'
-		size: root.width, (root.height - input.height)/8
+		size: root.width - up.width, (root.height - input.height)/8
 		y: root.y + input.height + 4*self.height
 		x: root.x + up.width
 		font_size: 32
@@ -133,7 +147,7 @@
 	Label:
 		canvas.before:
 			Color:
-				rgba: 0, 0, 255, 1
+				rgba: .84, .84, .77, 1
 			Rectangle:
 				pos: self.pos
 				size: self.size
@@ -142,7 +156,7 @@
 		text_size: self.size
 		valign: 'top'
 		halign: 'left'
-		size: root.width, (root.height - input.height)/8
+		size: root.width - up.width, (root.height - input.height)/8
 		y: root.y + input.height + 3*self.height
 		x: root.x + up.width
 		font_size: 32
@@ -151,7 +165,7 @@
 	Label:
 		canvas.before:
 			Color:
-				rgba: 0, 0, 255, 1
+				rgba: .84, .84, .77, 1
 			Rectangle:
 				pos: self.pos
 				size: self.size
@@ -160,7 +174,7 @@
 		text_size: self.size
 		valign: 'top'
 		halign: 'right'
-		size: root.width, (root.height - input.height)/8
+		size: root.width - up.width, (root.height - input.height)/8
 		y: root.y + input.height + 2*self.height
 		x: root.x + up.width
 		font_size: 32
@@ -169,7 +183,7 @@
 	Label:
 		canvas.before:
 			Color:
-				rgba: 0, 0, 255, 1
+				rgba: .84, .84, .77, 1
 			Rectangle:
 				pos: self.pos
 				size: self.size
@@ -178,7 +192,7 @@
 		text_size: self.size
 		valign: 'top'
 		halign: 'left'
-		size: root.width, (root.height - input.height)/8
+		size: root.width - up.width, (root.height - input.height)/8
 		y: root.y + input.height + self.height
 		x: root.x + up.width
 		font_size: 32
@@ -187,7 +201,7 @@
 	Label:
 		canvas.before:
 			Color:
-				rgba: 0, 0, 255, 1
+				rgba: .84, .84, .77, 1
 			Rectangle:
 				pos: self.pos
 				size: self.size
@@ -196,7 +210,7 @@
 		text_size: self.size
 		valign: 'top'
 		halign: 'right'
-		size: root.width, (root.height - input.height)/8
+		size: root.width - up.width, (root.height - input.height)/8
 		y: root.y + input.height
 		x: root.x + up.width
 		font_size: 32

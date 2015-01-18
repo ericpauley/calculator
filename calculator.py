@@ -18,6 +18,7 @@ class Calculator:
         self.builtins.update(elements.element_dict)
         self.builtins['Mol'] = elements.Molecule
         self.builtins['chemeq'] = elements.chemeq
+        self.builtins['u'] = units
 
     def can_split(self, symbol):
         if re.match(r'(([A-Z][a-z]?[a-z]?)([0-9]*))+', symbol):
@@ -35,7 +36,10 @@ class Calculator:
         else:
             var = None
             text = cmd
-        ans = parse_expr(text, local_dict=self.builtins, transformations=standard_transformations+(split_symbols_custom(self.can_split), implicit_multiplication, implicit_application, function_exponentiation, ))
+        try:
+            ans = parse_expr(text, local_dict=self.builtins, transformations=standard_transformations+(split_symbols_custom(self.can_split), implicit_multiplication, implicit_application, function_exponentiation, ))
+        except Exception as e:
+            return str(e)
         if var is not None:
             self.builtins[var] = ans
         self.builtins['ans'] = ans

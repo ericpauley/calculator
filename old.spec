@@ -1,9 +1,9 @@
 import sys
 
+a = Analysis(['repl.py'],
+             hiddenimports=[])
 from kivy.tools.packaging.pyinstaller_hooks import install_hooks
 install_hooks(globals())
-a = Analysis(['main.py'],
-             hiddenimports=[])
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
           a.scripts,
@@ -12,10 +12,10 @@ exe = EXE(pyz,
                         ('msvcr100.dll', 'C:\\Windows\\System32\\msvcr100.dll', 'BINARY')]
           if sys.platform == 'win32' else a.binaries,
           a.zipfiles,
-          a.datas + [('elements.json',      'elements.json', 'DATA'),
-          ('calc.kv',      'calc.kv', 'DATA'),
-          ('up.png',      'up.png', 'DATA'),
-          ('down.png',      'down.png', 'DATA')],
+          a.datas + [('elements.json',      'elements.json', 'DATA')],
+          a.datas + [('calc.kv',      'calc.kv', 'DATA')],
+          a.datas + [('up.png',      'up.png', 'DATA')],
+          a.datas + [('down.png',      'down.png', 'DATA')],
           name=os.path.join('dist', 'calc' + ('.exe' if sys.platform == 'win32' else '')),
           debug=False,
           strip=None,
