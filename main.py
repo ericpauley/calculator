@@ -26,6 +26,7 @@ def coloring(matchobj):
 class CalcGUI(Widget):
     pass
 
+# Opens in-program documentation
 class HelpButton(Button):
     def __init__(self, **kwargs):
         Button.__init__(self, **kwargs)
@@ -37,7 +38,8 @@ class HelpButton(Button):
             content=Label(text='Display functions here\nTubkid'),
             size_hint=(.5, .5))
         popup.open()
-    
+
+#Allows for scrolling through previous solutions
 class ScrollButton(Button):
     def __init__(self, **kwargs):
         Button.__init__(self, **kwargs)
@@ -49,7 +51,8 @@ class ScrollButton(Button):
             self.input.scroll_up()
         else:
             self.input.scroll_down()
-    
+
+#Displays the input and allows editing
 class UserInput(TextInput):
     line1 = ObjectProperty(None)
     line2 = ObjectProperty(None)
@@ -88,7 +91,8 @@ class UserInput(TextInput):
             self.input_lines.append(self.after.pop(len(self.after)-1))
             self.output_lines.append(self.after.pop(len(self.after)-1))
             self.update_screen()
-        
+    
+    # Passes lines to the calculator functions for processing
     def on_text_validate(self):
         out = str(calc.run_cmd(self.text))
         input = re.sub('[a-zA-Z]+', coloring, self.text)
@@ -105,6 +109,7 @@ class UserInput(TextInput):
         self.input_lines.append(input)
         self.output_lines.append(output)
         
+    #Shifts screen lines for rendering
     def update_screen(self):
         i = 0
         if len(self.input_lines) > 0:   

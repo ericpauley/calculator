@@ -14,6 +14,7 @@ raw = json.load(open(base+"elements.json"), parse_float=decimal.Decimal)
 
 class Molecule(u.Unit):
     
+    # Parses molecular formulas
     def __new__(cls, name):
         if isinstance(name, Symbol):
             name = name.name
@@ -25,15 +26,7 @@ class Molecule(u.Unit):
             contents[element_dict[match.group(1)]] = int(match.group(2)) if match.group(2) else 1
         obj.contents = contents
         return obj
-    
-    def __init__(self, name):
-        if isinstance(name, Symbol):
-            name = name.name
-        contents = {}
-        for match in re.finditer(r'([A-Z][a-z]?[a-z]?)([0-9]*)', name):
-            contents[element_dict[match.group(1)]] = int(match.group(2)) if match.group(2) else 1
-        self.contents = contents
-        
+'''    
 def chemeq(side1, side2):
     elements = set()
     side1 = list(side1.atoms(Molecule))
@@ -43,11 +36,14 @@ def chemeq(side1, side2):
     elements = list(elements)
     for item in elements:
         pass
-    
+'''
     
 
 class Element(u.Unit):
 
+    '''
+    Creates the elements as units
+    '''
     def __new__(cls, name, info, **assumptions):
         obj = AtomicExpr.__new__(cls, **assumptions)
         obj.name = name
@@ -76,6 +72,7 @@ class Element(u.Unit):
     def __repr__(self):
         return self.__string__()
 
+#Compiled into a processed list for use in calculator
 element_dict={}
 for name, value in raw.items():
     element = Element(name, value)
