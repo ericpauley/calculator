@@ -1,0 +1,204 @@
+#:kivy 1.0.9
+
+<CalcGUI>:
+    down: down
+    up: up
+    ScrollButton:
+        input: input
+        id: down
+        background_color: 255, 0, 0, 1
+        font_size: 12
+        height: root.height /2
+        width: root.width / 10
+        y: root.y
+        x: root.x
+        Image:
+            source: "down.png"
+            width: root.down.width/2
+            height: root.down.height/2
+            keep_ratio: False
+            allow_stretch: True
+            x: root.down.center_x - self.width/2
+            y: root.down.center_y - self.height/2
+        
+    ScrollButton:
+        input: input
+        id: up
+        background_color: 255, 0, 0, 1
+        font_size: 12
+        height: root.height /2
+        width: root.width / 10
+        y: root.y + down.height
+        x: root.x
+        Image:
+            source: "up.png"
+            width: root.up.width/2
+            height: root.up.height/2
+            keep_ratio: False
+            allow_stretch: True
+            x: root.up.center_x - self.width/2
+            y: root.up.center_y - self.height/2
+        
+    UserInput:
+		line1: line1
+		line2: line2
+		line3: line3
+		line4: line4
+		line5: line5
+		line6: line6
+		line7: line7
+		line8: line8
+		id: input
+		font_size: 32 
+		multiline: False
+		height: 70
+		width: root.width
+		center_x: root.width / 2 + up.width
+		top: root.y + self.height
+		text: str("hi")
+		selection_color: (0,0,0,1) 
+    
+	Label:
+		canvas.before:
+			Color:
+				rgba: 0, 0, 255, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: line1
+		markup: True
+		text_size: self.size
+		valign: 'top'
+		halign: 'left'
+		size: root.width, (root.height - input.height)/8
+		y: root.y + input.height + 7*self.height
+		x: root.x + up.width
+		font_size: 32
+		color: (255, 255, 255, 1)
+		text: ''
+	Label:
+		canvas.before:
+			Color:
+				rgba: 0, 255, 0, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: line2
+		markup: True
+		text_size: self.size
+		valign: 'top'
+		halign: 'right'
+		size: root.width, (root.height - input.height)/8
+		y: root.y + input.height + 6*self.height
+		x: root.x + up.width
+		font_size: 32
+		color: 255, 255, 255, 1
+		text: ''
+	Label:
+		canvas.before:
+			Color:
+				rgba: 0, 0, 255, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: line3
+		markup: True
+		text_size: self.size
+		valign: 'top'
+		halign: 'left'
+		size: root.width, (root.height - input.height)/8
+		y: root.y + input.height + 5*self.height
+		x: root.x + up.width
+		font_size: 32
+		color: 255, 255, 255, 1
+		text: ''
+	Label:
+		canvas.before:
+			Color:
+				rgba: 0, 0, 255, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: line4
+		markup: True
+		text_size: self.size
+		valign: 'top'
+		halign: 'right'
+		size: root.width, (root.height - input.height)/8
+		y: root.y + input.height + 4*self.height
+		x: root.x + up.width
+		font_size: 32
+		color: 255, 255, 255, 1
+		text: ''
+	Label:
+		canvas.before:
+			Color:
+				rgba: 0, 0, 255, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: line5
+		markup: True
+		text_size: self.size
+		valign: 'top'
+		halign: 'left'
+		size: root.width, (root.height - input.height)/8
+		y: root.y + input.height + 3*self.height
+		x: root.x + up.width
+		font_size: 32
+		color: 255, 255, 255, 1
+		text: ''
+	Label:
+		canvas.before:
+			Color:
+				rgba: 0, 0, 255, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: line6
+		markup: True
+		text_size: self.size
+		valign: 'top'
+		halign: 'right'
+		size: root.width, (root.height - input.height)/8
+		y: root.y + input.height + 2*self.height
+		x: root.x + up.width
+		font_size: 32
+		color: 255, 255, 255, 1
+		text: ''
+	Label:
+		canvas.before:
+			Color:
+				rgba: 0, 0, 255, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: line7
+		markup: True
+		text_size: self.size
+		valign: 'top'
+		halign: 'left'
+		size: root.width, (root.height - input.height)/8
+		y: root.y + input.height + self.height
+		x: root.x + up.width
+		font_size: 32
+		color: 255, 255, 255, 1
+		text: ''
+	Label:
+		canvas.before:
+			Color:
+				rgba: 0, 0, 255, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: line8
+		markup: True
+		text_size: self.size
+		valign: 'top'
+		halign: 'right'
+		size: root.width, (root.height - input.height)/8
+		y: root.y + input.height
+		x: root.x + up.width
+		font_size: 32
+		color: 255, 255, 255, 1
+		text: ''

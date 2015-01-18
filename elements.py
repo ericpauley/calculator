@@ -1,10 +1,16 @@
 import json
 import decimal
-raw = json.load(open("elements.json"), parse_float=decimal.Decimal)
 import sympy.physics.units as u
 from sympy.core import AtomicExpr
 import re
 from sympy.core import Symbol
+import sys
+
+try:
+    base = sys._MEIPASS+"\\"
+except Exception:
+    base = ''
+raw = json.load(open(base+"elements.json"), parse_float=decimal.Decimal)
 
 class Molecule(u.Unit):
     
@@ -35,7 +41,8 @@ def chemeq(side1, side2):
     for item in side1 + side2:
         elements += item.keys()
     elements = list(elements)
-    for item in elements
+    for item in elements:
+        pass
     
     
 
