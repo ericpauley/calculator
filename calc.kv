@@ -7,8 +7,8 @@
     
     HelpButton:
         id: help
-        background_color: 255, 255, 0, 1
-        font_size: 12
+        background_color: 255, 0, 0, 1
+        font_size: 24
         height: root.height /3
         width: root.width / 10
         y: root.y
@@ -19,7 +19,7 @@
         input: input
         id: down
         direction: "DOWN"
-        background_color: 255, 0, 0, 1
+        background_color: 0, 0, 255, 1
         font_size: 12
         height: root.height /3
         width: root.width / 10
@@ -38,7 +38,7 @@
         input: input
         id: up
         direction: "UP"
-        background_color: 255, 0, 0, 1
+        background_color: 0, 0, 255, 1
         font_size: 12
         height: root.height /3
         width: root.width / 10
@@ -69,8 +69,7 @@
 		width: root.width
 		center_x: root.width / 2 + up.width
 		top: root.y + self.height
-		text: str("hi")
-		selection_color: (0,0,0,1) 
+		text: str("Input Expression Here")
     
 	Label:
 		canvas.before:
@@ -89,7 +88,7 @@
 		x: root.x + up.width
 		font_size: 32
 		color: (255, 255, 255, 1)
-        text: ''
+        	text: ''
 	Label:
 		canvas.before:
 			Color:
