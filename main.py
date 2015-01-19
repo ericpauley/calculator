@@ -35,7 +35,7 @@ class HelpButton(Button):
         
     def callback(self, instance):
         popup = Popup(title='Functions:',
-            content=Label(text='Display functions here\nTubkid'),
+            content=Label(text='See physical documentation.'),
             size_hint=(.5, .5))
         popup.open()
 
