@@ -53,7 +53,7 @@ Assume an object is thrown upwards at `15m/s`. How long will it take for the obj
 
 This problem is trivial to solve with the calculator:
 
-1. Set `a` to the acceleration of gravity: `a = -9.8m/s^2'
+1. Set `a` to the acceleration of gravity: `a = -9.8m/s^2`
 2. Integrate `a` with respect to `t` and add initial velocity: `v = integrate(a, t) + 15m/s`
 3. Integrate velocity to find position: `y = integrate(v, t)`
 4. Solve the final equation to get the time when `y == 0`: `solve(y == 0, t)`
