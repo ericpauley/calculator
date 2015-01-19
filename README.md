@@ -3,6 +3,7 @@
 ### CONTENTS ###
 1. Installing Program
 2. Basic Input
+3. Functions
 
 ### 1. Installing Program ###
 The program is distributed as an executable (.exe) file. No additional installation is required. Just double click on the file to run.
@@ -38,3 +39,23 @@ Functions are run by typing their name, followed by parentheses with the argumen
 This calculator has the ability to take symbolic equations and find the resulting values which make that equation true. For example, try running `solve(3x-3==0)`. This will return `[1]`, the list of the solutions to the equation. In this case there is only one solution but for more complicated equations the calculator can find any number of equations for any number of variables.
 
 The calculator can also solve multiple equations for multiple variables. For example, try running `solve([3x-4==y, 2x+3==y],[x,y])`. This will solve the two equations entered for both `x` and `y`. The result, `{x: 7, y: 17}` shows that `x==7` and `y==17`. In this way complex equation systems may be solved quickly and easily.
+
+#### diff ####
+The calculator has the ability to take the derivative of equations multiple times and with respect to any variable. This is a very powerful tool in calculus and only the most expensive graphing calculators on the market have the ability to do it. To try it out, try entering `diff(3x^2-2x+1)`. It should equal `6*x - 2`, the derivative of the original function with respect to x.
+
+The calculator will try to figure out what you want to take the derivative with respect to, but in case you want to take more complex derivatives you may enter the variables to differentiate with respect to as more arguments. `diff(3x^2*y+6y^2*x, y, x)` will find the differntial with respect to x and y symbollically. This is known as the gradient in mathematics and is usually very tedious to calculate. With the calculator is is now just one command.
+
+#### integrate ####
+Integration is one of the most powerful tools in all of mathematics, and the calculator has the ability to perform complex symbollic integrations on just about anything. Try running `integrate(16x^2+12x-16)`, which returns `16*x**3/3 + 6*x**2 - 16*x`. This method will work with very complex equations thanks to a state-of-the-art symbolic math library with the program utilizes. You may also integrate over multiple variables in the same way you would differentiate over multiple variables.
+
+### A Physics Example ###
+Assume an object is thrown upwards at `15m/s`. How long will it take for the object to fall?
+
+This problem is trivial to solve with the calculator:
+
+1. Set `a` to the acceleration of gravity: `a = -9.8m/s^2'
+2. Integrate `a` with respect to `t` and add initial velocity: `v = integrate(a, t) + 15m/s`
+3. Integrate velocity to find position: `y = integrate(v, t)`
+4. Solve the final equation to get the time when `y == 0`: `solve(y == 0, t)`
+
+This final equation returns `[0.0, 3.06122448979592*s]`. The first value is at the time the object is thrown and the final value is the amount of time it takes for the object to land.
