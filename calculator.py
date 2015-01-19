@@ -8,6 +8,29 @@ import elements
 from sympy.physics import units
 from sympy import *
 import re
+
+def convert_eq(tokens, local_dict, global_dict):
+    """Converts `==` for use in Eq()"""
+    result = []
+    for toknum, tokval in tokens:
+        if toknum == OP:
+            if tokval == '==':
+                result.append((OP, '^'))
+            else:
+                result.append((toknum, tokval))
+        else:
+            result.append((toknum, tokval))
+
+    return result
+
+def eq(self, other):
+    return Eq(self, other)
+
+Expr.__xor__ = eq
+Expr.__rxor__ = eq
+Atom.__xor__ = eq
+Atom.__rxor__ = eq
+
 class Calculator:
 
     #Create initial variables for calculator
@@ -24,6 +47,14 @@ class Calculator:
         #Unit override
         self.builtins['u'] = units
 
+        self.transformations=standard_transformations+(split_symbols_custom(self.can_split), 
+        implicit_multiplication, 
+        #implicit_application, 
+        #function_exponentiation, 
+        convert_xor,
+        convert_eq,
+        )
+
     '''
     This fuction checks if a variable is elligible for splitting in sympy
     '''
@@ -38,6 +69,7 @@ class Calculator:
     '''
     Accepts a command string and parses it in the current evironment
     '''
+
     def run_cmd(self, cmd):
         #Parsees for assignment operator (ex: a=2)
         m = re.match(r'(?:(\w+) *=)([^=].*)', cmd.strip())
@@ -46,14 +78,14 @@ class Calculator:
             text = m.group(2)
         else:
             var = None
-        text = cmd
+            text = cmd
         try:
             #Parse and evaluate expression
-            ans = parse_expr(text, local_dict=self.builtins, transformations=standard_transformations+(split_symbols_custom(self.can_split), implicit_multiplication, implicit_application, function_exponentiation, ))
+            ans = parse_expr(text, local_dict=self.builtins, transformations=self.transformations)
         except Exception as e:
             return str(e)
         if var is not None:
             #save ans variable for future calculations
             self.builtins[var] = ans
-            self.builtins['ans'] = ans
-            return ans
+        self.builtins['ans'] = ans
+        return ans
