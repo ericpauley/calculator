@@ -4,6 +4,7 @@
 1. Installing Program
 2. Basic Input
 3. Functions
+3. A Physics Example
 
 ### 1. Installing Program ###
 The program is distributed as an executable (.exe) file. No additional installation is required. Just double click on the file to run.
