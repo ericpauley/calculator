@@ -29,3 +29,12 @@ Because the calculator is a simplified Python prompt, there are a few difference
 
 The calculator also uses a different notation for equality, two equals signs (`==`). For purposes of testing if two things are equal these two signs are used, but to assign a value to a variable just one equals sign (`=`) is used.
 
+### 3. Functions ###
+One of the most powerful features of this calculator is its ability to hook into various functions in order to provide further functionality. Below a small subset of those functions are detailed. For more information visit the SymPy docs at http://docs.sympy.org/latest/index.html.
+
+Functions are run by typing their name, followed by parentheses with the arguments to that function enclosed. For example, `solve(3x-1==0)` will run the `solve` function with the equation `3x-1==0`.
+
+#### solve ####
+This calculator has the ability to take symbolic equations and find the resulting values which make that equation true. For example, try running `solve(3x-3==0)`. This will return `[1]`, the list of the solutions to the equation. In this case there is only one solution but for more complicated equations the calculator can find any number of equations for any number of variables.
+
+The calculator can also solve multiple equations for multiple variables. For example, try running `solve([3x-4==y, 2x+3==y],[x,y])`. This will solve the two equations entered for both `x` and `y`. The result, `{x: 7, y: 17}` shows that `x==7` and `y==17`. In this way complex equation systems may be solved quickly and easily.
